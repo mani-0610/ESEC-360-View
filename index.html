@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ESEC Campus Tour</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f4f4f4;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #0a3d62;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .header-left h1 {
+      margin: 0;
+      font-size: 20px;
+    }
+    .header-left h2 {
+      margin: 0;
+      font-size: 14px;
+      font-weight: normal;
+      color: #ffd32a;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li {
+      margin-left: 20px;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #ffd32a;
+    }
+    section {
+      padding: 100px 20px 50px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .tour-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 20px auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      position: relative;
+      background: #000;
+    }
+    .tour-container iframe {
+      width: 100%;
+      height: 80vh;
+      border: none;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+    .tour-container iframe.visible {
+      opacity: 1;
+    }
+    .fullscreen-inside {
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      width: 50px;
+      height: 50px;
+      background: #0a3d62;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 22px;
+      transition: transform 0.3s ease, background 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .fullscreen-inside:hover {
+      background: #074272;
+      transform: scale(1.15);
+    }
+    footer {
+      background: #0a3d62;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+    #preloader {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+    .spinner {
+      width: 60px;
+      height: 60px;
+      border: 6px solid #ccc;
+      border-top: 6px solid #0a3d62;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    .main1 { position: absolute; text-shadow: #fff; font-size: xx-large; left: 8%; top: 7%; }
+    .main2 { position: absolute; text-shadow: #fff; padding-left: 12%; }
+    .main3 { position: absolute; font-size: x-small; padding-left: 7%; padding-top: 3%; }
+  </style>
+</head>
+<body>
+
+  <div id="preloader">
+    <div class="spinner"></div>
+  </div>
+
+  <header>
+    <div class="header-left">
+      <img src="new logo.png" width="90" height="80" alt="ESEC Logo">
+      <div class="main1"><h1>Erode Sengunthar Engineering College</h1></div>
+      <div class="main2"><h2>[AUTONOMOUS]</h2></div>
+      <div class="main3"><h1>Perundurai | Erode | Tamilnadu</h1></div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#facilities">Facilities</a></li>
+        <li><a href="#admissions">Admissions</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="home">
+    <h2>Explore Our Campus in a 360° View</h2>
+    <p>Take a 360° virtual tour of Erode Sengunthar Engineering College and discover our facilities.</p>
+    <div class="tour-container">
+      <iframe id="tourFrame" src="https://tour.panoee.net/68d260fcc0d03f6eeec41a93"></iframe>
+      <button class="fullscreen-inside" id="fullscreen-inside" title="Fullscreen">⛶</button>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>At Erode Sengunthar Engineering College, we foster a professional learning atmosphere where innovation, discipline, and excellence come together, blending tradition with modernity to create a campus that inspires both academic excellence and personal growth.</p>
+  </section>
+
+  <section id="facilities">
+    <h2>Facilities</h2>
+    <p>Our campus is equipped with advanced laboratories, a digital library, smart classrooms, well-furnished hostels, spacious dining halls, recreational spaces, modern sports facilities, and a fully equipped gym that encourage fitness and overall well-being.</p>
+  </section>
+
+  <section id="admissions">
+    <h2>Admissions</h2>
+    <p>Our admission process ensures students join a vibrant academic community supported by modern infrastructure, experienced faculty, and holistic learning opportunities.</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: esecprincipal@gmail.com | Phone: 94421 32706 | 99428 65500</p>
+  </section>
+
+  <footer>
+    <p>© 2025 ESEC College. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll("section");
+    const revealOnScroll = () => {
+      const triggerBottom = window.innerHeight * 0.85;
+      sections.forEach(sec => {
+        if (sec.getBoundingClientRect().top < triggerBottom) sec.classList.add("visible");
+      });
+    };
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll();
+
+    const iframe = document.getElementById("tourFrame");
+    const preloader = document.getElementById("preloader");
+    iframe.addEventListener("load", () => {
+      preloader.style.display = "none";
+      iframe.classList.add("visible");
+    });
+
+    const fullscreenBtnInside = document.getElementById("fullscreen-inside");
+    fullscreenBtnInside.addEventListener("click", () => {
+      if (!document.fullscreenElement) iframe.requestFullscreen();
+      else document.exitFullscreen();
+    });
+  </script>
+
+</body>
+</html>
